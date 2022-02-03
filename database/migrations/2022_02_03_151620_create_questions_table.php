@@ -18,6 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->integer("project_id");
             $table->integer("type");
             $table->string("query");
+            $table->integer("priority_key");
         });
     }
 
