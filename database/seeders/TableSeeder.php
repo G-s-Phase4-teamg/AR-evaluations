@@ -17,11 +17,11 @@ class TableSeeder extends Seeder
     public function run()
     {
         //clientsテーブル
-        DB::table("clients")->insert([
-            "name" => "test_client",
-            "mail_address" => "test@test",
-            "password" => "password",
-        ]);
+        // DB::table("clients")->insert([
+        //     "name" => "test_client",
+        //     "mail_address" => "test@test",
+        //     "password" => "password",
+        // ]);
 
 
         //usersテーブル
@@ -32,7 +32,7 @@ class TableSeeder extends Seeder
         for ($i =1; $i <=10; $i++){   //10個データを作成するためのループ
             $date = rand($min, $max); //ランダムに日付を指定
             $date = date('Y-m-d', $date);
-            DB::table("users")->insert([
+            DB::table("arusers")->insert([
                 "project_id" => 1,
                 "created_at" => $date,
                 "updated_at" => $date,
