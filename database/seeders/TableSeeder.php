@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 class TableSeeder extends Seeder
 {
@@ -16,17 +17,22 @@ class TableSeeder extends Seeder
      */
     public function run()
     {
-        //clientsテーブル
-        // DB::table("clients")->insert([
-        //     "name" => "test_client",
-        //     "mail_address" => "test@test",
-        //     "password" => "password",
-        // ]);
-
-
         //usersテーブル
-        $start = Carbon::create("2021", "1", "1"); //created_atの範囲を指定(スタート)
-        $end = Carbon::create("2021", "1", "27"); //created_atの範囲を指定(エンド)
+        $date=Carbon::create("2021", "2", "1"); //created_atの日付を指定
+        $date=strtotime($date); //dateをtimestampに変換
+        $date = date('Y-m-d', $date);
+        DB::table("users")->insert([
+            "name" => "test_client",
+            "email" => "test@test",
+            "password" => Hash::make("password"),
+            "created_at" => $date,
+            "updated_at" => $date,
+        ]);
+
+
+        //arusersテーブル
+        $start = Carbon::create("2021", "2", "1"); //created_atの範囲を指定(スタート)
+        $end = Carbon::create("2021", "2", "27"); //created_atの範囲を指定(エンド)
         $min = strtotime($start);//timestampに変換
         $max = strtotime($end);//timestampに変換
         for ($i =1; $i <=10; $i++){   //10個データを作成するためのループ
