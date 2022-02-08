@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//clientController
+Route::post("/projects", [ClientController::class, "projects"]);
+
+//userController
 
 Route::get('/', function () {
     return view('welcome');
