@@ -12,4 +12,8 @@ class Clientcontroller extends Controller
         $projects =Users::find(Auth::user()->id)->get_projects;
         return view("client.projects", ["projects"=>$projects]);
     }
+
+    function survey(){
+        return view("client.survey");
+    }
 }
