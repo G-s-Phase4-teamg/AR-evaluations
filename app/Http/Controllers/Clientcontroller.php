@@ -23,7 +23,7 @@ class Clientcontroller extends Controller
 
         $choices =$questions_m->get_choices($question_id); //question_idを使い、choicesを抽出
         $choice_answers =$questions_m->get_choice_answers($question_id); //question_idを使い、choice_answersを抽出
-        $text_answers =$questions_m->get_text_answers($question_id);
+        $text_answers =$questions_m->get_text_answers($question_id); //question_idを使い、text_answersを抽出
 
 
         return view("client.survey",[
@@ -31,6 +31,7 @@ class Clientcontroller extends Controller
             "choices" =>$choices,
             "choice_answers" =>$choice_answers,
             "text_answers" =>$text_answers,
+            "project_id" =>$request->project_id,
         ]);
     }
 }
