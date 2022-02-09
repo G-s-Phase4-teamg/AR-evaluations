@@ -14,7 +14,7 @@ use App\Http\Controllers\ClientController;
 |
 */
 //clientController
-Route::get("/projects", [ClientController::class, "projects"]);
+Route::get("/projects", [ClientController::class, "projects"])->name("client.projects");
 
 //userController
 
