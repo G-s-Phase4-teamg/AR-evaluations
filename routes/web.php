@@ -14,14 +14,17 @@ use App\Http\Controllers\ClientController;
 |
 */
 //clientController
-Route::post("/projects", [ClientController::class, "projects"]);
+Route::get("/projects", [ClientController::class, "projects"]);
 
 //userController
 
+
+//welcome
 Route::get('/', function () {
     return view('welcome');
 });
 
+//login
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
