@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string("ar_url");
             $table->string("public_url");
             $table->string("name");
+            $table->timestamp("released_at");
         });
     }
 
