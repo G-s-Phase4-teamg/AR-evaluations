@@ -10,6 +10,6 @@ class users extends Model
 {
     use HasFactory;
     public function get_projects(){
-        return $this->hasMany(Projects::class);
+        return $this->hasMany(Projects::class)->orderby("released_at");
     }
 }
