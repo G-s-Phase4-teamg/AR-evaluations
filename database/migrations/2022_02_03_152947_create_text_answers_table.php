@@ -17,7 +17,7 @@ class CreateTextAnswersTable extends Migration
             $table->id();
             $table->integer("question_id");
             $table->string("answer");
-            $table->integer("user_id");
+            $table->integer("customer_id");
         });
     }
 

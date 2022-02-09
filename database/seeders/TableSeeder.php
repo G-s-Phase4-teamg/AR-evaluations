@@ -30,7 +30,7 @@ class TableSeeder extends Seeder
         ]);
 
 
-        //arusersテーブル
+        //customersテーブル
         $start = Carbon::create("2021", "2", "1"); //created_atの範囲を指定(スタート)
         $end = Carbon::create("2021", "2", "27"); //created_atの範囲を指定(エンド)
         $min = strtotime($start);//timestampに変換
@@ -38,7 +38,7 @@ class TableSeeder extends Seeder
         for ($i =1; $i <=10; $i++){   //10個データを作成するためのループ
             $date = rand($min, $max); //ランダムに日付を指定
             $date = date('Y-m-d', $date);
-            DB::table("arusers")->insert([
+            DB::table("customers")->insert([
                 "project_id" => 1,
                 "created_at" => $date,
                 "updated_at" => $date,
@@ -47,13 +47,13 @@ class TableSeeder extends Seeder
 
         //projectsテーブル
         DB::table("projects")->insert([
-            "client_id" => 1,
+            "users_id" => 1,
             "ar_url" => "test_url",
             "public_url" => "test_public",
             "name" => "クリスマスイベント",
         ]);
         DB::table("projects")->insert([
-            "client_id" => 1,
+            "users_id" => 1,
             "ar_url" => "test2_url",
             "public_url" => "test2_public",
             "name" => "バレンタインイベント",
@@ -109,13 +109,13 @@ class TableSeeder extends Seeder
             DB::table("choice_answers")->insert([
                 "question_id"=>1,
                 "choice_id"=>$rand_choice,
-                "user_id"=>$i,
+                "customer_id"=>$i,
             ]);
             $rand_choice = rand(6, 10); //choice_idに入れるランダムな値を生成
             DB::table("choice_answers")->insert([
                 "question_id"=>2,
                 "choice_id"=>$rand_choice,
-                "user_id"=>$i,
+                "customer_id"=>$i,
             ]);
         }
 
@@ -124,7 +124,7 @@ class TableSeeder extends Seeder
             DB::table("text_answers")->insert([
                 "question_id"=> 3,
                 "answer"=> Str::random(10),
-                "user_id"=> $i,
+                "customer_id"=> $i,
             ]);
         }
     }

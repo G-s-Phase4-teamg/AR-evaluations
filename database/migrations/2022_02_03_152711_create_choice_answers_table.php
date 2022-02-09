@@ -17,7 +17,7 @@ class CreateChoiceAnswersTable extends Migration
             $table->id();
             $table->integer("question_id");
             $table->integer("choice_id");
-            $table->integer("user_id");
+            $table->integer("customer_id");
         });
     }
 
