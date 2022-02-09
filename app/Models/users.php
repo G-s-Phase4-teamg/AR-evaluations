@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Users;
+use App\Models\Projects;
 
 class users extends Model
 {
     use HasFactory;
     public function get_projects(){
-        return $this->hasMany(Users::class);
+        return $this->hasMany(Projects::class);
     }
 }

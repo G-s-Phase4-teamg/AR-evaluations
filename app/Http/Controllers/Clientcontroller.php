@@ -10,7 +10,6 @@ class Clientcontroller extends Controller
 {
     function projects(){
         $projects =Users::find(Auth::user()->id)->get_projects;
-        dd($projects);
-        return view("client.projects");
+        return view("client.projects", ["projects"=>$projects]);
     }
 }
