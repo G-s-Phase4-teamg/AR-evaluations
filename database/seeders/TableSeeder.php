@@ -51,12 +51,14 @@ class TableSeeder extends Seeder
             "ar_url" => "test_url",
             "public_url" => "test_public",
             "name" => "クリスマスイベント",
+            "released_at" =>date('2021-12-1'),
         ]);
         DB::table("projects")->insert([
             "users_id" => 1,
             "ar_url" => "test2_url",
             "public_url" => "test2_public",
             "name" => "バレンタインイベント",
+            "released_at" =>date('2021-1-25'),
         ]);
 
         //hushtagsテーブル
