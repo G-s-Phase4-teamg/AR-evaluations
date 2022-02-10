@@ -5,7 +5,7 @@ test_survey
 <p>{{$choices}}</p>
 <p>{{$choice_answers}}</p>
 <p>{{$text_answers}}</p>
-
+<!-- インスタ分析結果を表示するためのリンク（セキュリティの都合上postで送信） -->
 <form method="POST" action="{{ route('client.instagram')}}"> 
     @csrf
     <input type="hidden" name="project_id" value="{{$project_id}}">

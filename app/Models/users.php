@@ -9,7 +9,7 @@ use App\Models\Projects;
 class users extends Model
 {
     use HasFactory;
-    public function get_projects(){
+    public function get_projects(){ //user_idが一致するデータをprojectsテーブルから抽出
         return $this->hasMany(Projects::class)->orderby("released_at");
     }
 }
