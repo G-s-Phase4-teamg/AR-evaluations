@@ -65,8 +65,16 @@ class DatabaseSeeder extends Seeder
             "ar_url" => "test2_url",
             "public_url" => "test2_public",
             "name" => "バレンタインイベント",
-            "released_at" =>date('2021-2-1'),
-            "closed_at" =>date('2021-2-28'),
+            "released_at" =>date('2022-2-1'),
+            "closed_at" =>date('2022-2-28'),
+        ]);
+        DB::table("projects")->insert([
+            "users_id" => 2,
+            "ar_url" => "test3_url",
+            "public_url" => "test3_public",
+            "name" => "イベント",
+            "released_at" =>date('2022-4-1'),
+            "closed_at" =>date('2022-4-28'),
         ]);
 
         //hushtagsテーブル
