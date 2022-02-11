@@ -7,4 +7,5 @@
         <input type="hidden" name="project_id" value="{{$project_id}}">
         <button type="submit">link for survey</button>
     </form> 
+    <a href="{{route('client.api_test')}}">test_api</a>
 </x-app-layout>

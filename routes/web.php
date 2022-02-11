@@ -17,6 +17,7 @@ use App\Http\Controllers\ClientController;
 Route::get("/projects", [ClientController::class, "projects"])->name("client.projects");
 Route::post("/survey", [ClientController::class, "survey"])->name("client.survey");
 Route::post("/instagram", [ClientController::class, "instagram"])->name("client.instagram");
+Route::get("/api_test", [ClientController::class, "api_test"])->name("client.api_test");
 
 //userController
 
