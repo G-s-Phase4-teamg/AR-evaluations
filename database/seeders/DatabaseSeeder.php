@@ -80,6 +80,11 @@ class DatabaseSeeder extends Seeder
         //hushtagsテーブル
         DB::table("hushtags")->insert([
             "project_id" =>1,
+            "hushtag" => "クリスマス",
+            "hushtag_id" => "test",
+        ]);
+        DB::table("hushtags")->insert([
+            "project_id" =>2,
             "hushtag" => "バレンタイン",
             "hushtag_id" => "17841403181514482",
         ]);
