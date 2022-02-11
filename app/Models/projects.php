@@ -10,7 +10,7 @@ class projects extends Model
     use HasFactory;
 
     public function store_api(){
-        $projects=Projects::get();
-        return("test");
+        $project_ids=Projects::select("id")->get();
+        dd($project_ids);
     }
 }

@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string("public_url");
             $table->string("name");
             $table->timestamp("released_at");
+            $table->timestamp("closed_at");
         });
     }
 
