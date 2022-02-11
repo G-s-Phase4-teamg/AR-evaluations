@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         $end = Carbon::create("2021", "2", "27"); //created_atの範囲を指定(エンド)
         $min = strtotime($start);//timestampに変換
         $max = strtotime($end);//timestampに変換
-        for ($i =1; $i <=10; $i++){   //10個データを作成するためのループ
+        for ($i =1; $i <=30; $i++){   //10個データを作成するためのループ
             $date = rand($min, $max); //ランダムに日付を指定
             $date = date('Y-m-d', $date);
             DB::table("customers")->insert([
@@ -58,19 +58,22 @@ class DatabaseSeeder extends Seeder
             "public_url" => "test_public",
             "name" => "クリスマスイベント",
             "released_at" =>date('2021-12-1'),
+            "closed_at" =>date('2021-12-26'),
         ]);
         DB::table("projects")->insert([
             "users_id" => 1,
             "ar_url" => "test2_url",
             "public_url" => "test2_public",
             "name" => "バレンタインイベント",
-            "released_at" =>date('2021-1-25'),
+            "released_at" =>date('2021-2-1'),
+            "closed_at" =>date('2021-2-28'),
         ]);
 
         //hushtagsテーブル
         DB::table("hushtags")->insert([
             "project_id" =>1,
-            "hushtag" => "クリスマスtestAR",
+            "hushtag" => "バレンタイン",
+            "hushtag_id" => "17841403181514482",
         ]);
 
         //questionsテーブル
@@ -112,7 +115,7 @@ class DatabaseSeeder extends Seeder
         }
 
         //choice_answersテーブル
-        for ($i =1; $i <=10; $i++){   //10個データを作成するためのループ
+        for ($i =1; $i <=30; $i++){   //10個データを作成するためのループ
             $rand_choice = rand(1, 5); //choice_idに入れるランダムな値を生成
             DB::table("choice_answers")->insert([
                 "question_id"=>1,
@@ -128,7 +131,7 @@ class DatabaseSeeder extends Seeder
         }
 
         //text_answersテーブル
-        for ($i=1; $i <=10; $i++){
+        for ($i=1; $i <=30; $i++){
             DB::table("text_answers")->insert([
                 "question_id"=> 3,
                 "answer"=> Str::random(10),
