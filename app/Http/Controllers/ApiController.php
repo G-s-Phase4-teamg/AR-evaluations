@@ -32,7 +32,7 @@ class ApiController extends Controller
 
         try { //ハッシュタグをもとにinstagramAPIからデータを取得
             $parameters="id,media_url,permalink,like_count,comments_count,caption,timestamp"; //取得するパラメータを選択
-            //apiを呼び出すurlを作成
+            //apiを呼び出すurlを作成。最近のインスタ投稿を取得
             $url = config("instagram_api.instagram_api_url").$hushtag_id."/recent_media?user_id=".config("instagram_api.instagram_api_id")."&fields=".$parameters."&access_token=".config("instagram_api.instagram_api_token")."&limit=50";
             $method = "GET";
             $count = 50; //データを50件所得

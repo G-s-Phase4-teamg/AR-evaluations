@@ -50,6 +50,6 @@ class Clientcontroller extends Controller
     function api_test(){
         $projects_m =new Projects();
         $projects_m->store_api();
-        // dd($test);
+        return redirect()->route('client.projects');
     }
 }

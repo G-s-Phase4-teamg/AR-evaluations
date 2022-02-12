@@ -16,11 +16,12 @@ class CreateContributionsTable extends Migration
         Schema::create('contributions', function (Blueprint $table) {
             $table->id();
             $table->integer("hushtag_id");
-            $table->integer("instagram_id");
-            $table->string("media_url");
-            $table->string("permarink");
-            $table->string("caption");
+            $table->integer("instagram_id")->nullable();
+            $table->string("media_url", 500)->nullable();
+            $table->string("permalink", 500)->nullable();
+            $table->string("caption", 2200)->nullable();
             $table->timestamp("updated_at");
+            $table->timestamp("created_at");
         });
     }
 
