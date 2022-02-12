@@ -17,7 +17,6 @@ class CreateHushtagsTable extends Migration
             $table->id();
             $table->integer("project_id");
             $table->string("hushtag");
-            $table->string("hushtag_id");
         });
     }
 
