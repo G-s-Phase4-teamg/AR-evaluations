@@ -10,6 +10,12 @@ use App\Models\Projects;
 use App\Models\Contributions;
 
 use Youaoi\MeCab\MeCab;
+MeCab::setDefaults([
+    
+    // PATHが通っていないmecabを起動させる時に設定(default: mecab)
+    // 'command' => 'usr/local/bin/mecab',
+     
+]);
 
 use Auth;
 
@@ -71,8 +77,6 @@ class Clientcontroller extends Controller
         // $command="ls";
         // exec($command, $result, $return_ver);
         // dd($result);
-        echo MeCab::toReading('すもももももももものうち');
-        dd("");
 
         $mecab = new meCab();
         dd($mecab->analysis('すもももももももものうち'));
