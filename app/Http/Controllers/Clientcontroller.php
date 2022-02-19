@@ -10,12 +10,6 @@ use App\Models\Projects;
 use App\Models\Contributions;
 
 use Youaoi\MeCab\MeCab;
-MeCab::setDefaults([
-    
-    // PATHが通っていないmecabを起動させる時に設定(default: mecab)
-    // 'command' => 'usr/local/bin/mecab',
-     
-]);
 
 use Auth;
 
@@ -67,19 +61,14 @@ class Clientcontroller extends Controller
     }
 
     function analyze(){
-        // $projects_m =new Projects();
-        // $hushtags=$projects_m->get_running(); //進行中のプロジェクトのハッシュタグを取得
-        // foreach($hushtags as $hushtag){
-        //     $result=$this->hushtag_frequent($hushtag);
-        // }
-        
-        // $command='echo "May J.がmacOSを搭載したMacBook ProをAir DOの機内に持ち込んだ。" | mecab';
-        // $command="ls";
-        // exec($command, $result, $return_ver);
-        // dd($result);
+        $projects_m =new Projects();
+        $hushtags=$projects_m->get_running(); //進行中のプロジェクトのハッシュタグを取得
+        foreach($hushtags as $hushtag){
+            $result=$this->hushtag_frequent($hushtag);
+        }
 
-        $mecab = new meCab();
-        dd($mecab->analysis('すもももももももものうち'));
+        // $mecab = new meCab();
+        // dd($mecab->analysis('すもももももももものうち'));
 
     }
 
