@@ -16,6 +16,13 @@ class Clientcontroller extends Controller
         return view("client.projects", ["projects"=>$projects]);
     }
 
+
+    function project_analysis(){
+        return view("client.project_analysis");
+    }
+
+
+
     function survey(Request $request){
         //DBよりデータの取得
         $questions_m =new Questions(); //questionsをインスタンス化(models/questions)
