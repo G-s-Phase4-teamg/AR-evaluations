@@ -18,6 +18,7 @@ Route::get("/projects", [ClientController::class, "projects"])->name("client.pro
 Route::post("/survey", [ClientController::class, "survey"])->name("client.survey");
 Route::post("/instagram", [ClientController::class, "instagram"])->name("client.instagram");
 Route::get("/api_test", [ClientController::class, "api_test"])->name("client.api_test");
+Route::get("/analyze", [ClientController::class, "analyze"])->name("client.analyze");
 
 //userController
 
