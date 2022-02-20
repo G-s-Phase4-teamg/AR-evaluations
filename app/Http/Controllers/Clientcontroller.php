@@ -82,10 +82,13 @@ class Clientcontroller extends Controller
         $T="";
         $hushtag_array=[];
         $hushtag_output=[]; //最終的な出力結果
+        $norn_output=[];
+        $adjective_output=[];
+        $verb_output=[];
         $contributions =$contributions_m->get_contributions($hushtag); //投稿文のデータを取得
-        if (is_null($contributions)==true){
-            return $hushtag_output;
-        }
+        if (count($contributions)==0){
+            return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
+        }else{
             foreach($contributions as $contribution){
                 $text=""; //投稿文を保存する変数
                 $contribution_split=preg_split("/#/",$contribution->caption); //投稿文を[#]で分割
@@ -110,12 +113,19 @@ class Clientcontroller extends Controller
             $h_output=array_count_values($hushtag_array); 
             arsort($h_output); //ソート
             $keys = array_keys($h_output); //
-            for($a = 0; $a < 50; $a++){
-                $hushtag_output[]=[$keys[$a], $h_output[$keys[$a]]];
+            $count=count($h_output);
+            if($count>=50){
+                for($a = 0; $a < 50; $a++){
+                    $hushtag_output[]=[$keys[$a], $h_output[$keys[$a]]];
+                }
+            }else{
+                for($a = 0; $a < $count; $a++){
+                    $hushtag_output[]=[$keys[$a], $h_output[$keys[$a]]];
+                }
             }
 
 
-            // 自然言語処理NLP
+            // 自然言語処理（形態素解析）
             $text_noun=[]; //名詞を格納
             $text_adjective=[]; //形容詞を格納
             $text_verb=[]; //動詞を格納
@@ -205,6 +215,7 @@ class Clientcontroller extends Controller
 
             
             return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
+        }
     }
     
 }
