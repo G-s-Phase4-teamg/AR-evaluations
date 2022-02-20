@@ -44,13 +44,16 @@ class Clientcontroller extends Controller
         $hushtags_m =new Hushtags(); //hushtagsをインスタンス化(models/hushtags)
         $hushtags =$hushtags_m->get_hushtags($request->project_id); //get_hushtags関数を実行
         foreach($hushtags as $hushtag){
-            $hushtag_output=$this->hushtag_frequent($hushtag);
+            [$hushtag_output, $norn_output, $adjective_output, $verb_output]=$this->analyze_processing($hushtag);
         }
 
         return view("client.instagram",[
             "hushtags" =>$hushtags,
             "project_id" =>$request->project_id,
             "hushtag_output"=>$hushtag_output,
+            "norn_output"=>$norn_output,
+            "adjective_output"=>$adjective_output,
+            "verb_output"=>$verb_output,
         ]);
     }
 
@@ -134,7 +137,6 @@ class Clientcontroller extends Controller
             $test = array_filter($adjective, function ($element) { 
                 return $element->original == "自動獲得:テキスト";
             });
-            dd($test);
 
             $n_output=array_count_values($norn_array); //各名詞の出現回数を算出
             $a_output=array_count_values($adjective_array);  //各形容詞の出現回数を算出
@@ -160,24 +162,49 @@ class Clientcontroller extends Controller
             $keys = array_keys($a_output);
             $count=count($a_output);
             if($count>=50){
-                for($a = 0; $a < 50; $a++){
-                    $str=$keys[$a];
-                    $str= str_replace('代表表記:', '', $str);
-                    $str_ar= explode("/",$str);
-                    $adjective_output[]=[$str_ar[0], $a_output[$keys[$a]]];
+                for($a = 0; $a < 51; $a++){
+                    if ($keys[$a]!="自動獲得:テキスト"){
+                        $str=$keys[$a];
+                        $str= str_replace('代表表記:', '', $str);
+                        $str_ar= explode("/",$str);
+                        $adjective_output[]=[$str_ar[0], $a_output[$keys[$a]]];
+                    }
                 }
             }else{
                 for($a = 0; $a < $count; $a++){
-                    $str=$keys[$a];
-                    // dd($str);
-                    $adjective_output[]=[$keys[$a], $a_output[$keys[$a]]];
+                    if ($keys[$a]!="自動獲得:テキスト"){
+                        $str=$keys[$a];
+                        $str= str_replace('代表表記:', '', $str);
+                        $str_ar= explode("/",$str);
+                        $adjective_output[]=[$str_ar[0], $a_output[$keys[$a]]];
+                    }
                 }
             }
-            dd($a_output);
+
+            $keys = array_keys($v_output);
+            $count=count($v_output);
+            if($count>=50){
+                for($a = 0; $a < 51; $a++){
+                    if ($keys[$a]!="自動獲得:テキスト"){
+                        $str=$keys[$a];
+                        $str= str_replace('代表表記:', '', $str);
+                        $str_ar= explode("/",$str);
+                        $verb_output[]=[$str_ar[0], $v_output[$keys[$a]]];
+                    }
+                }
+            }else{
+                for($a = 0; $a < $count; $a++){
+                    if ($keys[$a]!="自動獲得:テキスト"){
+                        $str=$keys[$a];
+                        $str= str_replace('代表表記:', '', $str);
+                        $str_ar= explode("/",$str);
+                        $verb_output[]=[$str_ar[0], $v_output[$keys[$a]]];
+                    }
+                }
+            }
 
             
-            dd("end");
-            return $hushtag_output;
+            return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
     }
     
 }
