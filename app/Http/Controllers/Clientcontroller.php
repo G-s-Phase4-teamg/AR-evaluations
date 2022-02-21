@@ -66,6 +66,7 @@ class Clientcontroller extends Controller
             [$hushtag_output, $norn_output, $adjective_output, $verb_output]=$this->analyze_processing($hushtag);
         }
 
+
         return view("client.instagram",[
             "hushtags" =>$hushtags,
             "project_id" =>$request->project_id,
