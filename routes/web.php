@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\UserController;
+use App\Models\customers;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +23,7 @@ Route::post("/instagram", [ClientController::class, "instagram"])->name("client.
 Route::get("/api_test", [ClientController::class, "api_test"])->name("client.api_test");
 
 //userController
-
+Route::post("/question",[UserController::class,"question"])->name("user.question");
 
 //welcome
 Route::get('/', function () {
@@ -32,4 +35,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
 require __DIR__.'/auth.php';
+
+
+//ar
+Route::get('/ar', function () {
+    $user = DB::table('customers')->where('project_id')->first();
+    return view ('ar');
+ });
