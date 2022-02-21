@@ -28,13 +28,32 @@ class Clientcontroller extends Controller
         $choices =$questions_m->get_choices($question_id); //question_idを使い、choicesを抽出
         $choice_answers =$questions_m->get_choice_answers($question_id); //question_idを使い、choice_answersを抽出
         $text_answers =$questions_m->get_text_answers($question_id); //question_idを使い、text_answersを抽出
+        $choice_output=[];
+        $text_output=[];
+
+        //グラフ化しやすいようにデータの型を変形
+        foreach($questions as $question){
+            if($question->type==1){
+                $c_array=$choices->where("question_id", $question->id)->sortBy('priority_key'); //質問の選択肢のみ抽出
+                $c_choice=$c_array->pluck('choice')->all(); // 選択肢をarrayとして抽出
+                $c_id=$c_array->pluck('id')->all(); //選択肢のidをarrayとして抽出
+                $answer_array=[];
+                foreach($c_id as $id){
+                    $ans=$choice_answers->where("choice_id", $id)->pluck("count_answer")->all();
+                    array_push($answer_array, $ans[0]);
+                }
+                array_push($choice_output, [array_values($answer_array), array_values($c_choice)]);
+            } elseif($question->type==2){
+                $t_array=$text_answers->where("question_id", $question->id)->pluck("answer")->all();
+                array_push($text_output, $t_array);
+            }
+        }
 
 
         return view("client.survey",[
             "questions" =>$questions,
-            "choices" =>$choices,
-            "choice_answers" =>$choice_answers,
-            "text_answers" =>$text_answers,
+            "choice_output" =>$choice_output,
+            "text_output" =>$text_output,
             "project_id" =>$request->project_id,
         ]);
     }
