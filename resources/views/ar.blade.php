@@ -10,12 +10,12 @@
   <link rel="stylesheet" href="./css/gs-yonde.css">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <!-- <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> -->
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"> 
   <!-- <script src="//aframe.io/releases/0.8.0/aframe.min.js"></script>
   <script src="//jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-  <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe- ar.js"></script> -->
-  <!-- events.js ライブラリの読み込み -->
-  <script
+  <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe- ar.js"></script>  -->
+  <!-- events.js ライブラリの読み込み-->
+  <script>
     src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
 
   <!-- aframe-extras読み込み -->
