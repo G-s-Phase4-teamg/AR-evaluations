@@ -29,7 +29,7 @@
           <thead>
           <tr>
             <th class="table_head_f bg-head">ハッシュタグ</th>
-            <th class="table_head_f bg-head">ハッシュタグ</th>
+            <th class="table_head_f bg-head" id="table_head_f">ハッシュタグ</th>
           </tr>
           </thead>
           <tbody> 
