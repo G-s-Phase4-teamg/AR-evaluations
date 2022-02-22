@@ -75,7 +75,7 @@ class Clientcontroller extends Controller
 
 
         return view("client.instagram",[
-            "hushtags" =>$hushtags,
+            "hushtag" =>$hushtag,
             "project_id" =>$request->project_id,
             "hushtag_output"=>$hushtag_output,
             "norn_output"=>$norn_output,
