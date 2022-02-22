@@ -23,7 +23,7 @@ Route::post("/instagram", [ClientController::class, "instagram"])->name("client.
 Route::get("/api_test", [ClientController::class, "api_test"])->name("client.api_test");
 
 //userController
-//Route::post("/question",[UserController::class,"question"])->name("user.question");
+Route::post("/question",[UserController::class,"question"])->name("user.question");
 Route::get('/question', function () {
     return view ('question');
  });
