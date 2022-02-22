@@ -62,8 +62,15 @@ class Clientcontroller extends Controller
         //DBよりデータの取得
         $hushtags_m =new Hushtags(); //hushtagsをインスタンス化(models/hushtags)
         $hushtags =$hushtags_m->get_hushtags($request->project_id); //get_hushtags関数を実行
+        //出力用のファイル
+        $hushtag_output=[];
+        $norn_output=[];
+        $adjective_output=[];
+        $verb_outpu=[];
+        $data_len=0;
+
         foreach($hushtags as $hushtag){
-            [$hushtag_output, $norn_output, $adjective_output, $verb_output]=$this->analyze_processing($hushtag);
+            [$hushtag_output, $norn_output, $adjective_output, $verb_output, $data_len]=$this->analyze_processing($hushtag);
         }
 
 
@@ -74,6 +81,7 @@ class Clientcontroller extends Controller
             "norn_output"=>$norn_output,
             "adjective_output"=>$adjective_output,
             "verb_output"=>$verb_output,
+            "data_len"=>$data_len,
         ]);
     }
 
@@ -81,17 +89,6 @@ class Clientcontroller extends Controller
         $projects_m =new Projects(); 
         $projects_m->store_api(); // projectModelのstore_apiを実行
         return redirect()->route('client.projects');
-    }
-
-    function analyze(){
-        $projects_m =new Projects();
-        $hushtags=$projects_m->get_running(); //進行中のプロジェクトのハッシュタグを取得
-        foreach($hushtags as $hushtag){
-            $result=$this->analyze_processing($hushtag);
-        }
-
-        return redirect()->route('client.projects');
-
     }
 
     //analyze関数の分析を行う
@@ -106,6 +103,7 @@ class Clientcontroller extends Controller
         $adjective_output=[];
         $verb_output=[];
         $contributions =$contributions_m->get_contributions($hushtag); //投稿文のデータを取得
+        $data_len=count($contributions);
         if (count($contributions)==0){
             return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
         }else{
@@ -234,7 +232,7 @@ class Clientcontroller extends Controller
             }
 
             
-            return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
+            return [$hushtag_output, $norn_output, $adjective_output, $verb_output, $data_len];
         }
     }
     
