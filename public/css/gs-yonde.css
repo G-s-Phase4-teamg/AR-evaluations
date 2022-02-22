@@ -57,7 +57,7 @@ canvas{
 
 /* LINE point */
 .line_btn img{
-   width: 120px;
+   width: 120px !important;
 }
 
 
@@ -136,22 +136,4 @@ canvas{
 
 .none{
     display:none;
-}
-
-
-.hand{
-    text-align: center;
-}
-
-.hand img{
-    width: 40%;
-}
-
-/* how to use */
-.howtouse img{
-    position: fixed;
-    bottom: 16px;
-    right: 30px;
-    z-index: 11;
-    width: 35px;
 }
