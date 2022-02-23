@@ -151,6 +151,8 @@ class DatabaseSeeder extends Seeder
                 "question_id"=> 3,
                 "answer"=> Str::random(10),
                 "customer_id"=> $i,
+                "created_at"=>date('2021-12-1'),
+                "updated_at"=>date('2021-12-1'),
             ]);
         }
     }

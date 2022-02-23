@@ -8,6 +8,7 @@
 
 <body>
 <form method="post" action="{{ route('user.store')}}">
+@csrf
 <div class="Form">
 <img src="{{ asset('/img/yonde.png') }}" ><h3> AR使用後のアンケートご協力ください！</h3>
  
@@ -32,9 +33,7 @@
 </div>
 <div class="Form-Item" @if($errors->has('answer')) has-error @endif">>
 		 <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>使ったARの感想を教えてください。</p>
-     {{ Form::open() }}
-     {{ Form::textarea('name') }}
-     {{ Form::close() }}   
+     <textarea name="comment"></textarea >
 </div>
 
 <!-- routeで関数を呼び出し -->
