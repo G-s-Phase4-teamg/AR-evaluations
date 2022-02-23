@@ -144,3 +144,22 @@
     font-size: 16px;
   }
 }
+
+.Form-Item-answers {
+  border-top: 1px solid #ddd;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position:relative;
+}
+@media screen and (max-width: 600px) {
+  .Form-Item-answers {
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+  }
+}

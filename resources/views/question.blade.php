@@ -11,14 +11,14 @@
 <img src="{{ asset('/img/yonde.png') }}" ><h3> AR使用後のアンケートご協力ください！</h3>
  
 
-　<div class="Form-Item">
+<div class="Form-Item">
     <p class="Form-Item-Label"><span class="Form-Item-Label-Required">このイベントに満足していますか？</p>
-	 <input type="radio"　name="satisfaction" value="1">非常に満足
+	   <input type="radio" name="satisfaction" value="1">非常に満足
      <input type="radio" name="satisfaction" value="2">やや満足
      <input type="radio" name="satisfaction" value="3">どちらともいえない
      <input type="radio" name="satisfaction" value="4">やや不満
      <input type="radio" name="satisfaction" value="5">非常に不満
-  </div>
+</div>
 
 <div class="Form-Item">
 		 <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>このARをどこで知りましたか？(複数選択可能）</p>
@@ -28,15 +28,16 @@
 		<input type="checkbox">4：ツイッター
         <input type="checkbox">5：知らなかった
 
-　</div>
+</div>
 <div class="Form-Item" @if($errors->has('answer')) has-error @endif">>
 		 <p class="Form-Item-Label"><span class="Form-Item-Label-Required">必須</span>使ったARの感想を教えてください。</p>
-     <textarea cols="30" rows="10"></textarea> 
-     @if($errors->has('answer'))<span class="text-danger">{{ $errors->first('answer') }}</span> @endif
-　</div>
+     {{ Form::open() }}
+     {{ Form::textarea('name') }}
+     {{ Form::close() }}   
+</div>
 
-		
-  <input type="submit" class="Form-Btn" value="送信する">
+　<a href="http://localhost/answers" > 送信</a>
+  <!-- <input type="submit" class="Form-Btn" value="送信する"> -->
 </div>
 </body>
 </html>

@@ -161,7 +161,7 @@
       <img id="snap">
     </div>
 
-    <a href="" class="totte" id="take-photo" title="Take Photo"><img src="./img/shutter.png" alt=""></a>
+    <a href="" class="totte" id="take-photo" title="Take Photo"><img src="/img/shutter.png" alt=""></a>
 
    
   </div>
