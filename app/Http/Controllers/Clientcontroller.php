@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Questions;
 use App\Models\Hushtags;
+use App\Models\Projects;
 
 use Auth;
 
@@ -44,5 +45,11 @@ class Clientcontroller extends Controller
             "hushtags" =>$hushtags,
             "project_id" =>$request->project_id,
         ]);
+    }
+
+    function api_test(){
+        $projects_m =new Projects();
+        $projects_m->store_api();
+        return redirect()->route('client.projects');
     }
 }
