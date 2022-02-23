@@ -10,6 +10,7 @@ use App\Models\projects;
 class customers extends Model
 {
     use HasFactory;
+    protected $fillable = ['project_id'];
 
     //ARユーザーの関数
     public function get_customers($project_id){ //project_idが一致するデータをcustomersテーブルから抽出

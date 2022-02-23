@@ -155,7 +155,9 @@
         </a>
       </div>
       </div>
-      <a href="http://localhost/question" > アンケートお願いします。</a>
+      <?php $project_id=1 ?>
+      <!-- リンクはrouteを使う -->
+      <a href="{{ route('user.questions',$project_id )}}" > アンケートお願いします。</a>
       <img id="snap">
     </div>
       <img id="snap">
