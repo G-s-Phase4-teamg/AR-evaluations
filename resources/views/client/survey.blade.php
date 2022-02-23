@@ -15,7 +15,7 @@
 <body>
     <main>
         <h1 id="hushtag">アンケート結果</h1>
-        <p id="data_len">回答したユーザ数：</p>
+        <p id="data_len">回答したユーザ数：{{$user_len}}</p>
 
         <!-- アンケート結果 -->
         <?php $count=0; $t_count=-1; $c_count=-1; $choices=json_encode($choice_output)?>
@@ -23,8 +23,9 @@
         <div class="result">
             <!-- 選択式の回答 -->
             <?php $count=$count+1;?>
-            <h2 class="title">Q{{$count}}. {{$question->query}}</h2>
-            <?php if($question->type == 1) : $id=$question->id; $c_count=$c_count+1;?>
+            <?php $q_type=""; if($question->type == 2){$q_type="　(複数選択)";}; ?>
+            <h2 class="title">Q{{$count}}. {{$question->query}}{{$q_type}}</h2>
+            <?php if($question->type == 1 || $question->type == 2) : $id=$question->id; $c_count=$c_count+1;?>
                 <div class="canvas-container">
                     <canvas id="<?=$id?>" ></canvas>
                     <script>
@@ -36,7 +37,7 @@
                         data: {
                             labels: <?=$choices?>[<?=$c_count?>][1],
                             datasets: [{
-                                backgroundColor: ["#2b70b6", "#e061c6", "#efd43e", "#26a61c", "#2a1ca6", "#f89c2a", "#537750", "#e6a2e5", "#8f1936"],
+                                backgroundColor: ["#2b70b6", "#e061c6", "#efd43e", "#26a61c", "#f89c2a", "#537750", "#e6a2e5", "#8f1936"],
                                 data: <?=$choices?>[<?=$c_count?>][0]
                             }]
                         },
@@ -57,7 +58,7 @@
                     </script>
                 </div>
             <!-- 文字入力式の回答 -->
-            <?php elseif ($question->type == 2) : $t_count=$t_count+1; $texts=$text_output[$t_count];;?>
+            <?php elseif ($question->type == 3) : $t_count=$t_count+1; $texts=$text_output[$t_count];;?>
                 <div class="text_box">
                     @foreach($texts as $text)
                         <p class="text_answer">{{$text}}</p>

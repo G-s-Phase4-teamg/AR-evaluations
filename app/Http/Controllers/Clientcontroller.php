@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use App\Models\Customers;
 use App\Models\Questions;
 use App\Models\Hushtags;
 use App\Models\Projects;
@@ -22,6 +23,8 @@ class Clientcontroller extends Controller
 
     function survey(Request $request){
         //DBよりデータの取得
+        $customers_m=new Customers();//customersをインスタンス化(models/customers)
+        $user_len=$customers_m->get_user_len($request->project_id);
         $questions_m =new Questions(); //questionsをインスタンス化(models/questions)
         $questions =$questions_m->get_questions($request->project_id); //get_questions関数を実行
         $question_id =array_column($questions->toArray(), "id"); //questionsのidのみを配列として格納
@@ -33,7 +36,7 @@ class Clientcontroller extends Controller
 
         //グラフ化しやすいようにデータの型を変形
         foreach($questions as $question){
-            if($question->type==1){
+            if($question->type == 1 || $question->type == 2){
                 $c_array=$choices->where("question_id", $question->id)->sortBy('priority_key'); //質問の選択肢のみ抽出
                 $c_choice=$c_array->pluck('choice')->all(); // 選択肢をarrayとして抽出
                 $c_id=$c_array->pluck('id')->all(); //選択肢のidをarrayとして抽出
@@ -43,7 +46,7 @@ class Clientcontroller extends Controller
                     array_push($answer_array, $ans[0]);
                 }
                 array_push($choice_output, [array_values($answer_array), array_values($c_choice)]);
-            } elseif($question->type==2){
+            } elseif($question->type==3){
                 $t_array=$text_answers->where("question_id", $question->id)->pluck("answer")->all();
                 array_push($text_output, $t_array);
             }
@@ -51,6 +54,7 @@ class Clientcontroller extends Controller
 
 
         return view("client.survey",[
+            "user_len" =>$user_len,
             "questions" =>$questions,
             "choice_output" =>$choice_output,
             "text_output" =>$text_output,
