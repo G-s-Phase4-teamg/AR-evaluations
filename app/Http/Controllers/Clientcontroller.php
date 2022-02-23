@@ -186,6 +186,9 @@ class Clientcontroller extends Controller
                 for($a = 0; $a < $count; $a++){
                     $norn_output[]=[$keys[$a], $n_output[$keys[$a]]];
                 }
+                for($a=$count-1; $a < 51; $a++){
+                    $norn_output[]=["", 0];
+                }
             }
 
             $keys = array_keys($a_output);
@@ -208,6 +211,9 @@ class Clientcontroller extends Controller
                         $adjective_output[]=[$str_ar[0], $a_output[$keys[$a]]];
                     }
                 }
+                for($a=$count-1; $a < 51; $a++){
+                    $adjective_output[]=["", 0];
+                }
             }
 
             $keys = array_keys($v_output);
@@ -229,6 +235,9 @@ class Clientcontroller extends Controller
                         $str_ar= explode("/",$str);
                         $verb_output[]=[$str_ar[0], $v_output[$keys[$a]]];
                     }
+                }
+                for($a=$count-1; $a < 51; $a++){
+                    $verb_output[]=["", 0];
                 }
             }
 
