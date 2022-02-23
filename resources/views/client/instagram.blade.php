@@ -20,7 +20,9 @@
     <div id="main">
       <h1 id="hushtag">#{{$hushtag->hushtag}}</h1>
       <p id="data_len">取得した投稿数：{{$data_len}}</p>
-
+      
+      <!-- データがある場合 -->
+      <?php if($hushtag_output):?>
       <!-- ハッシュタグの結果 -->
       <div id="table_f">
         <h2 class="title">一緒に使われるハッシュタグ</h2>
@@ -77,6 +79,10 @@
           </tbody>
         </table>
       </div>
+      <!-- データがない場合 -->
+      <?php else:?>
+        <h1 id="alert">データがありません<h1>
+      <?php endif; ?>
     </div>
     </main>
 

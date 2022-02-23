@@ -66,7 +66,7 @@ class Clientcontroller extends Controller
         $hushtag_output=[];
         $norn_output=[];
         $adjective_output=[];
-        $verb_outpu=[];
+        $verb_output=[];
         $data_len=0;
 
         foreach($hushtags as $hushtag){
@@ -102,10 +102,11 @@ class Clientcontroller extends Controller
         $norn_output=[];
         $adjective_output=[];
         $verb_output=[];
+        $data_len=0;
         $contributions =$contributions_m->get_contributions($hushtag); //投稿文のデータを取得
         $data_len=count($contributions);
         if (count($contributions)==0){
-            return [$hushtag_output, $norn_output, $adjective_output, $verb_output];
+            return [$hushtag_output, $norn_output, $adjective_output, $verb_output, $data_len];
         }else{
             foreach($contributions as $contribution){
                 $text=""; //投稿文を保存する変数
@@ -231,7 +232,6 @@ class Clientcontroller extends Controller
                 }
             }
 
-            
             return [$hushtag_output, $norn_output, $adjective_output, $verb_output, $data_len];
         }
     }
