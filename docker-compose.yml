@@ -71,7 +71,11 @@ services:
                     "wget",
                     "--no-verbose",
                     "--spider",
+<<<<<<< HEAD
+                    "http://localhost:7700/health",
+=======
                     "http://localhost:7700/health"
+>>>>>>> a745159a65354bbb98b585d23f9753eb1fbee0b3
                 ]
             retries: 3
             timeout: 5s

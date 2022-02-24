@@ -16,9 +16,11 @@ use App\Http\Controllers\ClientController;
 //clientController
 Route::get("/projects", [ClientController::class, "projects"])->name("client.projects");
 Route::post("/survey", [ClientController::class, "survey"])->name("client.survey");
+Route::get("/survey", [ClientController::class, "survey"])->name("client.survey");
 Route::post("/instagram", [ClientController::class, "instagram"])->name("client.instagram");
 Route::get("/api_test", [ClientController::class, "api_test"])->name("client.api_test");
 Route::get("/analyze", [ClientController::class, "analyze"])->name("client.analyze");
+Route::get("/project_analysis", [ClientController::class, "project_analysis"])->name("client.project_analysis");
 
 //userController
 
