@@ -10,6 +10,7 @@ body {
 }
 
 #page1 {
+
     background: #2d2d2d;
 }
 
@@ -24,8 +25,10 @@ body {
 }
 
 .stage {
+    position:absolute;
     display: table-cell;
     vertical-align: middle;
+    width: 94vw;
 }
 
 .tabled,
@@ -318,4 +321,15 @@ p {
     40% {
         transform: scaleX(0);
     }
+}
+
+.container{
+    margin-top: 50px;
+    display:grid;
+    width:94vw;
+    grid-template-columns: 30vw 30vw 30vw;
+    gap:2vw;
+}
+.item{
+    width:30vw
 }
