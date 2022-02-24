@@ -8,13 +8,12 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <script src="https://unpkg.com/chart.js-plugin-labels-dv@3.0.5/dist/chartjs-plugin-labels.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 </head>
 <body>
     <main>
-        <h1 id="hushtag">アンケート結果</h1>
+        <h1 id="result_text">アンケート結果</h1>
         <p id="data_len">回答したユーザ数：{{$user_len}}</p>
 
         <!-- アンケート結果 -->
@@ -23,7 +22,7 @@
         <div class="result">
             <!-- 選択式の回答 -->
             <?php $count=$count+1;?>
-            <?php $q_type=""; if($question->type == 2){$q_type="　(複数選択)";}; ?>
+            <?php $q_type=""; if($question->type == 2){$q_type=" (複数選択)";}; ?>
             <h2 class="title">Q{{$count}}. {{$question->query}}{{$q_type}}</h2>
             <?php if($question->type == 1 || $question->type == 2) : $id=$question->id; $c_count=$c_count+1;?>
                 <div class="canvas-container">
@@ -39,20 +38,22 @@
                             datasets: [{
                                 backgroundColor: ["#2b70b6", "#e061c6", "#efd43e", "#26a61c", "#f89c2a", "#537750", "#e6a2e5", "#8f1936"],
                                 data: <?=$choices?>[<?=$c_count?>][0]
-                            }]
+                            }],
                         },
                         options: {
                             maintainAspectRatio: false,
                             plugins: {
                                 legend: {
-                                    labels: {
-                                        fontColor: '#ff0000',
-                                        fontSize: 18,
-                                    },
                                     position: 'right',
                                     display: true,
+                                    labels: {
+                                        padding: 14,
+                                        font: {
+                                            size: 17,
+                                        }
+                                    }
                                 }
-                            },
+                            }
                         }
                     });
                     </script>
