@@ -3,9 +3,9 @@
 /* 全体 */
 main{
   width:72vw;
+  margin-top: 90px;
   margin-right:5vw;
   margin-left:auto;
-  margin: 20px, auto, 30px, 5vw;
 }
 
 .result{

@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('css/survey.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <!-- Chart.js -->
@@ -19,8 +20,23 @@
 <body>
 <header>
     <div class="top_header">
+        <img src="{{ asset('img/Yonde.png') }}" id="logo">
+        <!-- ログアウト -->
+        <form method="POST" action="{{ route('logout')}}"> 
+          @csrf
+          <input type="hidden" name="project_id" value="{{$project_id}}">
+          <button type="submit"><i class="bi bi-door-open" id="logout_icon"></i></button>
+        </form>
+        <!-- プロジェクト一覧 -->
+        <a href="{{ route('client.projects')}}" method="GET"><i class="bi bi-grid-fill" id="projects_icon"></i></a>
     </div>
     <div class="left_header">
+        <i class="bi bi-clipboard-data on" id="survey_icon"></i>
+        <form method="POST" action="{{ route('client.instagram')}}"> 
+            @csrf
+            <input type="hidden" name="project_id" value="{{$project_id}}">
+            <button type="submit"><i class="bi bi-instagram off" id="instagram_icon"></i></button>
+        </form> 
     </div>
 </header>
 <main>

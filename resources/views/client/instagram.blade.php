@@ -6,8 +6,9 @@
   	
 <!-- Styles -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="{{ asset('css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('css/instagram.css') }}">
-<link rel="stylesheet" href="{{asset('/css/project_analysis.css')}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
@@ -15,27 +16,25 @@
 
 <body>
 <header>
-    <div class="hamburger-menu">
-        <input type="checkbox" id="menu-btn-check">
-        <label for="menu-btn-check" class="menu-btn"><span></span></label>
-        <!--ここからメニュー-->
-        <div class="menu-content">
-          <h1>Project Deta Analysis</h1>
-            <ul>
-                <li>
-                    <a href="/instagram">Instagram(This page)</a>
-                </li>
-                <li>
-                    <a href="/survey">Survey</a>
-                </li>
-                <li>
-                    <a href="/project_analysis">Top</a>
-                </li>
-            </ul>
-        </div>
-        <!--ここまでメニュー-->
+    <div class="top_header">
+        <img src="{{ asset('img/Yonde.png') }}" id="logo">
+        <!-- ログアウト -->
+        <form method="POST" action="{{ route('logout')}}"> 
+          @csrf
+          <input type="hidden" name="project_id" value="{{$project_id}}">
+          <button type="submit"><i class="bi bi-door-open" id="logout_icon"></i></button>
+        </form>
+        <!-- プロジェクト一覧 -->
+        <a href="{{ route('client.projects')}}" method="GET"><i class="bi bi-grid-fill" id="projects_icon"></i></a>
     </div>
-
+    <div class="left_header">
+      <form method="POST" action="{{ route('client.survey')}}"> 
+        @csrf
+        <input type="hidden" name="project_id" value="{{$project_id}}">
+        <button type="submit"><i class="bi bi-clipboard-data off" id="survey_icon"></i></button>
+      </form>
+      <i class="bi bi-instagram on" id="instagram_icon"></i>
+    </div>
 </header>
 
 

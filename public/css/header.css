@@ -1,10 +1,64 @@
 @charset "utf-8";
+/* 上部ヘッダー */
 .top_header{
-  background-color: #FFD636;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin:0;
+  background-color: #0097A8;
   height:70px;
+  width:100vw;
+  color:#1d1d1d;
+  z-index:1;
 }
-/* .left_header{
-  background-color: #FFD636;
+#logo{
+  position:absolute;
+  height:50px;
+  top:10px;
+  left:10px;
+}
+#logout_icon{
+  position:absolute;
+  top:5px;
+  right:2vw;
+  font-size: 2.5vw;
+}
+#projects_icon{
+  position:absolute;
+  top:5px;
+  right:6vw;
+  font-size: 2.5vw;
+}
+
+
+/* 左ヘッダー */
+.left_header{
+  position:fixed;
+  top:0;
+  left:0;
+  margin:0;
+  background-color: #3d3d3d;
   height: 100vh;
-  width:70px;
-} */
+  width:20vw;
+  z-index:0;
+}
+
+#instagram_icon{
+  position:absolute;
+  top:90px;
+  left:7vw;
+  font-size:2.8vw;
+}
+
+#survey_icon{
+  position:absolute;
+  top:87px;
+  left:1.5vw;
+  font-size:3vw;
+}
+.off{
+  color:#FEFDFD;
+}
+.on{
+  color:#807f7f;
+}
