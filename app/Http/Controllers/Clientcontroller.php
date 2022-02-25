@@ -152,6 +152,9 @@ class Clientcontroller extends Controller
                 for($a = 0; $a < $count; $a++){
                     $hushtag_output[]=[$keys[$a], $h_output[$keys[$a]]];
                 }
+                for($a=$count-1; $a < 51; $a++){
+                    $hushtag_output[]=["", 0];
+                }
             }
 
 

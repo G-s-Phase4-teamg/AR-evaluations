@@ -24,6 +24,12 @@ class projects extends Model
                 if (isset($contribution["media_url"])==false){
                     $contribution["media_url"]="";
                 }
+                if (isset($contribution["caption"])==false){
+                    $contribution["caption"]="";
+                }
+                if (isset($contribution["permalink"])==false){
+                    $contribution["permalink"]="";
+                }
                 
                 Contributions::create([ //所得したデータをcontributionテーブルに保存
                     "hushtag_id"=> $hushtag->id,

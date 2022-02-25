@@ -44,7 +44,7 @@
 
 <main>
 <div id="main">
-  <h1 id="hushtag">#{{$hushtag->hushtag}}</h1>
+  <h1 id="hushtag"># {{$hushtag->hushtag}}</h1>
   <p id="data_len">取得した投稿数：{{$data_len}}</p>
   
   <!-- データがある場合 -->
@@ -112,7 +112,6 @@
 </div>
 </main>
 
-<a href="{{route('client.api_test')}}">test_api</a>
-<a href="{{route('client.analyze')}}">run_analyze</a>
+<a href="{{route('client.api_test')}}" id="test_api">test_api</a>
 </body>
 </html>

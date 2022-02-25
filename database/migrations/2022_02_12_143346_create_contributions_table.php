@@ -17,8 +17,8 @@ class CreateContributionsTable extends Migration
             $table->id();
             $table->integer("hushtag_id");
             $table->integer("instagram_id")->nullable();
-            $table->string("media_url", 500)->nullable();
-            $table->string("permalink", 500)->nullable();
+            $table->string("media_url", 2000)->nullable();
+            $table->string("permalink", 2000)->nullable();
             $table->string("caption", 2200)->nullable();
             $table->timestamp("updated_at");
             $table->timestamp("created_at");

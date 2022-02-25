@@ -36,12 +36,27 @@ class ApiController extends Controller
             $url = config("instagram_api.instagram_api_url").$hushtag_id."/recent_media?user_id=".config("instagram_api.instagram_api_id")."&fields=".$parameters."&access_token=".config("instagram_api.instagram_api_token")."&limit=50";
             $method = "GET";
             $count = 50; //データを50件所得
+            $articles=[];
 
-            $client = new Client();
-            $response = $client->request($method, $url); //apiの呼び出し
+            for($a = 0; $a <= 2; $a++){
+                if($a==0){
+                    $client = new Client();
+                    $response = $client->request($method, $url); //apiの呼び出し
 
-            $results = $response->getBody(); //$responseのbodyを所得
-            $articles = json_decode($results, true); //連想配列へ変換
+                    $results = $response->getBody(); //$responseのbodyを所得
+                    $articles = json_decode($results, true); //連想配列へ変換
+                    $result=$articles["data"];
+                   
+                }elseif(array_key_exists("paging", $articles)){
+                    $url=$articles["paging"]["next"];
+                    $response = $client->request($method, $url); //apiの呼び出し
+
+                    $results = $response->getBody(); //$responseのbodyを所得
+                    $merge_articles=json_decode($results, true);
+                    $result=array_merge($result, $merge_articles["data"]);
+                }
+            }
+
 
         } catch (RequestException $e) { //エラーが生じた場合の処理
             echo Psr7\Message::toString($e->getRequest());
@@ -49,7 +64,7 @@ class ApiController extends Controller
                 echo Psr7\Message::toString($e->getResponse());
             }
         }
-        return $articles["data"];
+        return $result;
     }
 }
 

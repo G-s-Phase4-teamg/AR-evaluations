@@ -32,7 +32,6 @@ class UserController extends Controller
             "customer_id"=> $data->id,
         ]);
         foreach($request->q_two as $answer){
-            //echo($answer);
             choice_answers::create([
                 "question_id"=> 2,
                 "choice_id"=> $answer ,
@@ -42,7 +41,7 @@ class UserController extends Controller
         
         text_answers::create([
             "question_id"=> 3,
-            "answer"=> $request->name ,
+            "answer"=> $request->comment,
             "customer_id"=> $data->id,
         ]); 
         return view("answers");
