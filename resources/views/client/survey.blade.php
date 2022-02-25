@@ -35,6 +35,11 @@
         <a href="{{route('client.instagram', ['project_id'=>$project_id])}}">
             <i class="bi bi-instagram off" id="instagram_icon"></i>
         </a>
+        <div class="jumplink">
+            @foreach($questions as $question)
+            <a href="#<?=$question->id?>_jump"> {{$question->query}}</a>
+            @endforeach
+      </div>
     </div>
 </header>
 <main>
@@ -44,14 +49,14 @@
     <!-- アンケート結果 -->
     <?php $count=0; $t_count=-1; $c_count=-1; $choices=json_encode($choice_output)?>
     @foreach($questions as $question)
-    <div class="result">
+    <div class="result"  id="<?=$question->id?>_jump">
         <!-- 選択式の回答 -->
         <?php $count=$count+1;?>
         <?php $q_type=""; if($question->type == 2){$q_type=" (複数選択)";}; ?>
         <h2 class="title">Q{{$count}}. {{$question->query}}{{$q_type}}</h2>
         <?php if($question->type == 1 || $question->type == 2) : $id=$question->id; $c_count=$c_count+1;?>
             <div class="canvas-container">
-                <canvas id="<?=$id?>" ></canvas>
+                <canvas id="<?=$id?>"></canvas>
                 <script>
                 var ctx = document.getElementById("<?=$id?>");
                 ctx.height = 350;
@@ -85,7 +90,7 @@
             </div>
         <!-- 文字入力式の回答 -->
         <?php elseif ($question->type == 3) : $t_count=$t_count+1; $texts=$text_output[$t_count];;?>
-            <div class="text_box">
+            <div class="text_box padding">
                 @foreach($texts as $text)
                     <p class="text_answer">{{$text}}</p>
                 @endforeach
@@ -94,11 +99,5 @@
     </div>
     @endforeach
 </main>
-    <!-- インスタ分析結果を表示するためのリンク（セキュリティの都合上postで送信） -->
-    <form method="POST" action="{{ route('client.instagram')}}"> 
-        @csrf
-        <input type="hidden" name="project_id" value="{{$project_id}}">
-        <button type="submit">link for instagram</button>
-    </form> 
 </body>
 </html>

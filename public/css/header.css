@@ -68,3 +68,17 @@
 .on{
   color:#807f7f;
 }
+.jumplink{
+  position:fixed;
+  color: #FEFDFD;
+  font-size: 20px;
+  left: 20px;
+  top:170px;
+  display:grid;
+  gap: 30px;
+  width:17vw;
+}
+
+#hushtag_jump{
+  top:170px;
+}

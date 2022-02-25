@@ -32,6 +32,10 @@
         <i class="bi bi-clipboard-data off" id="survey_icon"></i>
       </a>
       <i class="bi bi-instagram on" id="instagram_icon"></i>
+      <div class="jumplink">
+        <a href="#hushtag"> 一緒に使われるハッシュタグ</a>
+        <a href="#table_s"> 投稿文によく使われる言葉</a>
+      </div>
     </div>
 </header>
 
@@ -51,7 +55,7 @@
   <?php if($hushtag_output):?>
   <!-- ハッシュタグの結果 -->
   <div id="table_f">
-    <h2 class="title">一緒に使われるハッシュタグ</h2>
+    <h2 class="title" >一緒に使われるハッシュタグ</h2>
 
     <table class="table">
       <thead>
@@ -111,7 +115,7 @@
   <?php endif; ?>
 </div>
 </main>
-
-<a href="{{route('client.api_test')}}" id="test_api">test_api</a>
+<!-- APIを強制実行するためのリンク（通常時は使用しない） -->
+<!-- <a href="{{route('client.api_test')}}" id="test_api">test_api</a> -->
 </body>
 </html>
