@@ -36,8 +36,6 @@
      <textarea name="comment"></textarea >
 </div>
 
-<!-- routeで関数を呼び出し -->
-<!-- 　<a href="http://localhost/answers" > 送信</a> -->
 <input type="submit" class="Form-Btn" value="送信する">
 </div>
 </form>

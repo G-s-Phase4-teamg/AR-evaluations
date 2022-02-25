@@ -39,10 +39,10 @@ class UserController extends Controller
                 "customer_id"=> $data->id,
             ]);
         }
-        // dd($request->q_two);
+        
         text_answers::create([
             "question_id"=> 3,
-            "answer"=> $request->comment ,
+            "answer"=> $request->name ,
             "customer_id"=> $data->id,
         ]); 
         return view("answers");
