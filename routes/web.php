@@ -27,11 +27,9 @@ Route::get("/analyze", [ClientController::class, "analyze"])->name("client.analy
 // postではなくgetを使う & 関数名が異なる question=>x question=>○ 
 Route::get("/questions",[UserController::class,"questions"])->name("user.questions");
 Route::post("/store",[UserController::class,"store"])->name("user.store");
-// Route::get('/question', function () {
-//     return view ('question');
-//  });
 
- Route::get('/answers', function () {
+//answers
+Route::get('/answers', function () {
     return view ('answers');
  });
 
@@ -54,41 +52,3 @@ Route::get('/ar', function () {
     return view ('ar');
  });
 
-Route::post('/question',function(){
-
-    // バリデーションのルール定義
-    $rules = array(
-      'name' => 'required'
-    );
-  
-    // バリデーション設定
-    $validation = Validator::make(Input::all(), $rules);
-  
-    // バリデーションNG
-    if($validation->fails()) {
-      // リダイレクトしてエラーメッセージを表示 withInputでフォームの内容を維持することが可能
-      return Redirect::to('/question')
-        ->withInput()
-        ->withErrors($validation);
-    } else {
-      // 同じ名前が既に登録されているか確認
-      $allanswers = allanswers::where('name', '=', Input::get('name'))
-        ->first();
-  
-      // 登録済みの場合はリダイレクト
-      if($allanswers) {
-        return Redirect::to('/questions')
-          ->withInput()
-          ->with('duplicate', Input::get('name').'は登録されています');
-      } else {
-        // 未登録の場合はデータベースに追加
-        allanswers::create(array(
-          'name' => Input::get('name'),
-        ));
-          
-        // 登録後にリダイレクト	
-        return Redirect::to('/question')
-          ->with('success', '登録されました');
-      }
-    }
-  });

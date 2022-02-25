@@ -7,6 +7,7 @@ use App\Models\Questions;
 use App\Models\Users;
 use App\Models\Customers;
 use App\Models\Choice_answers;
+use App\Models\Text_answers;
 
 class UserController extends Controller
 {
@@ -31,14 +32,21 @@ class UserController extends Controller
             "customer_id"=> $data->id,
         ]);
         foreach($request->q_two as $answer){
-            echo($answer);
+            //echo($answer);
             choice_answers::create([
                 "question_id"=> 2,
                 "choice_id"=> $answer ,
                 "customer_id"=> $data->id,
             ]);
         }
-        dd($request->q_two);
+        // dd($request->q_two);
+        text_answers::create([
+            "question_id"=> 3,
+            "answer"=> $request->comment ,
+            "customer_id"=> $data->id,
+        ]); 
+        return view("answers");
     }
+   
     
 }
