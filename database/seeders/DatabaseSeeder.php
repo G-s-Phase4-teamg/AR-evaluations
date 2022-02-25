@@ -132,12 +132,16 @@ class DatabaseSeeder extends Seeder
                 "question_id"=>1,
                 "choice_id"=>$rand_choice,
                 "customer_id"=>$i,
+                "created_at"=>date('2021-12-1'),
+                "updated_at"=>date('2021-12-1'),
             ]);
             $rand_choice = rand(6, 10); //choice_idに入れるランダムな値を生成
             DB::table("choice_answers")->insert([
                 "question_id"=>2,
                 "choice_id"=>$rand_choice,
                 "customer_id"=>$i,
+                "created_at"=>date('2021-12-1'),
+                "updated_at"=>date('2021-12-1'),
             ]);
         }
 

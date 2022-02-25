@@ -18,6 +18,8 @@ class CreateChoiceAnswersTable extends Migration
             $table->integer("question_id");
             $table->integer("choice_id");
             $table->integer("customer_id");
+            $table->timestamp("created_at");
+            $table->timestamp("updated_at");
         });
     }
 
