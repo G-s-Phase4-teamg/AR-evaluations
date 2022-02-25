@@ -28,11 +28,9 @@
         <a href="{{ route('client.projects')}}" method="GET"><i class="bi bi-grid-fill" id="projects_icon"></i></a>
     </div>
     <div class="left_header">
-      <form method="POST" action="{{ route('client.survey')}}"> 
-        @csrf
-        <input type="hidden" name="project_id" value="{{$project_id}}">
-        <button type="submit"><i class="bi bi-clipboard-data off" id="survey_icon"></i></button>
-      </form>
+      <a href="{{route('client.survey', ['project_id'=>$project_id])}}">
+        <i class="bi bi-clipboard-data off" id="survey_icon"></i>
+      </a>
       <i class="bi bi-instagram on" id="instagram_icon"></i>
     </div>
 </header>
