@@ -13,7 +13,7 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
 <!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 </head>
 
@@ -58,6 +58,7 @@
             <div class="canvas-container">
                 <canvas id="<?=$id?>"></canvas>
                 <script>
+                Chart.register(ChartDataLabels);
                 var ctx = document.getElementById("<?=$id?>");
                 ctx.height = 350;
                 ctx.width = "500px";
@@ -68,11 +69,18 @@
                         datasets: [{
                             backgroundColor: ["#2b70b6", "#e061c6", "#efd43e", "#26a61c", "#f89c2a", "#537750", "#e6a2e5", "#8f1936"],
                             data: <?=$choices?>[<?=$c_count?>][0]
-                        }],
+                        }]
                     },
                     options: {
                         maintainAspectRatio: false,
                         plugins: {
+                            datalabels: {
+                                render: 'value',
+                                font:{
+                                    size: 20,
+                                    },
+                                color: "white",
+                            },
                             legend: {
                                 position: 'right',
                                 display: true,
@@ -80,11 +88,11 @@
                                     padding: 14,
                                     font: {
                                         size: 17,
-                                    }
-                                }
-                            }
-                        }
-                    }
+                                    },
+                                },
+                            },
+                        },
+                    },
                 });
                 </script>
             </div>
@@ -92,7 +100,7 @@
         <?php elseif ($question->type == 3) : $t_count=$t_count+1; $texts=$text_output[$t_count];;?>
             <div class="text_box padding">
                 @foreach($texts as $text)
-                    <p class="text_answer">{{$text}}</p>
+                    <p class="text_answer">・{{$text}}</p>
                 @endforeach
             </div>
         <?php endif; ?>

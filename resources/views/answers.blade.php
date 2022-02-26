@@ -8,8 +8,8 @@
 
 <body>
 <div class="Form">
-    <img src="{{ asset('/img/yonde.png') }}" style="position:absolute; left:20px; top: 30px;">
-    <h3 style="width: 100vw; position:absolute; left:20px; top: 200px; font-size:50px;"> ご協力ありがとうございました。</h3>
+    <img src="{{ asset('/img/yonde.png') }}" style="position:absolute; left:40px; top: 50px;">
+    <h3 style="width: 100vw; position:absolute; left:40px; top: 200px; font-size:50px;"> ご協力ありがとうございました。</h3>
 </div>
 
 </body>
